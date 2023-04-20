@@ -13,14 +13,13 @@ connection.once('open', async () => {
   
     // Drop existing students
     await Thought.deleteMany({});
-  
-    const generateUser = getRandomUser()
-    console.log(generateUser);
+
     // Add courses to the collection and await the results
-    const user = await User.collection.insertOne(generateUser);
+    const user = await User.collection.insertOne(getRandomUser());
+    const users = await User.collection.insertOne(getRandomUser());
   
     // Log out the seed data to indicate what should appear in the database
-    console.table({ user });
+    console.table({ user, users });
     console.info('Seeding complete! 🌱');
     process.exit(0);
   } catch (error) {

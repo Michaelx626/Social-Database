@@ -20,5 +20,13 @@ const getRandomUser = () => {
   return userData[Math.floor(Math.random() * userData.length)];
 }
 
+const thoughtData = () => {
+  const thoughts = [
+    {
+      
+    }
+  ]
+}
+
 // Export the functions for use in seed.js
 module.exports = { getRandomUser };
