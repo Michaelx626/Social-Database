@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const { ObjectId } = require('mongodb');
 
 const headCount = async () => {
   User.aggregate()
@@ -67,37 +68,49 @@ module.exports = {
       });
   },
 
-//   addThought(req, res) {
-//     console.log("You are adding a thought");
-//     console.log(req.body);
-//     User.findOneAndUpdate(
-//       { _id: req.params.userId },
-//       { $addToSet: { thoughts: req.body } },
-//       { runValidators: true, new: true }
-//     )
-//       .then((user) =>
-//         !user
-//           ? res
-//               .status(404)
-//               .json({ message: "No user found with that ID :(" })
-//           : res.json(user)
-//       )
-//       .catch((err) => res.status(500).json(err));
-//   },
+  addThought(req, res) {
+    console.log("You are adding a thought");
+    console.log(req.body);
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $addToSet: { thoughts: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>
+        !user
+          ? res
+              .status(404)
+              .json({ message: "No user found with that ID :(" })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
 
-//   removeThought(req, res) {
-//     User.findOneAndUpdate(
-//       { _id: req.params.userId },
-//       { $pull: { thought: { thoughtId: req.params.thoughtId } } },
-//       { runValidators: true, new: true }
-//     )
-//       .then((user) =>
-//         !user
-//           ? res
-//               .status(404)
-//               .json({ message: "No user found with that ID :(" })
-//           : res.json(user)
-//       )
-//       .catch((err) => res.status(500).json(err));
-//   },
+  removeThought(req, res) {
+    const thoughtId = new ObjectId(req.params.thoughtId)
+    console.log(req.params.userId)
+    console.log(thoughtId)
+    console.log(typeof thoughtId)
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { thoughts: { _id: thoughtId } } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>
+        !user
+          ? res
+              .status(404)
+              .json({ message: "No user found with that ID :(" })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+
+  // createFriend(req, res){
+
+  // },
+
+  // deleteFriend(req, res){
+
+  // }
 };
