@@ -85,13 +85,11 @@ module.exports = {
   },
 
   removeThought(req, res) {
-    const thoughtId = new ObjectId(req.params.thoughtId)
-    console.log(req.params.userId)
-    console.log(thoughtId)
-    console.log(typeof thoughtId)
+    const thoughtId = new ObjectId(req.params.thoughtId);
+
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { thoughts: { thought: thoughtId } } },
+      { $pull: { thoughts: thoughtId } },
       { runValidators: true, new: true }
     )
       .then((user) =>
@@ -121,13 +119,11 @@ module.exports = {
   },
 
   deleteFriend(req, res){
-    const friendId = new ObjectId(req.params.friendId)
-    console.log(req.params.userId)
-    console.log(friendId)
-    console.log(typeof friendId)
+    const friendId = new ObjectId(req.params.friendId);
+    
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { friends: { friend: friendId } } },
+      { $pull: { friends: friendId } },
       { runValidators: true, new: true }
     )
       .then((user) =>
