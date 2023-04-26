@@ -22,7 +22,7 @@
 ![text](./Screenshot/Screen%20Shot%202023-04-26%20at%201.01.53%20AM.png)
 
 <h2 align="center" id="Credits">Credit</h2>
-<p align="center">N/A</p>
+<p align="center"></p>
 
 <h2 align="center">Tests</h2>
 <p align="center">N/A</p>
