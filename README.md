@@ -15,7 +15,7 @@
    
 <h2 align="center" id="Usage">Usage</h2>
 <p align="center">You can access my project, Social-Database, by simply clicking on this highlighted text.</p>
-<p align="center"><a href="${usage}" target="_blank">Here</a></p>
+<p align="center"><a href="https://github.com/Michaelx626/Social-Database" target="_blank">Here</a></p>
 
 <h2 align="center">Screenshots</h2>
 
