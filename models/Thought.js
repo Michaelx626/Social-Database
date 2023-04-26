@@ -12,7 +12,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAt) => new Date(createdAt).toLocaleDateString('en-US')
+      get: (createdAt) => new Date(createdAt).toLocaleDateString()
     },
     username: {
       type: String,
